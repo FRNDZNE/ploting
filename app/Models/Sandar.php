@@ -11,8 +11,11 @@ use Illuminate\Support\Carbon;
 class Sandar extends Model
 {
     use HasFactory;
-    protected $guarded = [];
     use SoftDeletes;
+
+    protected $guarded = [];
+
+    protected $casts = ['status' => 'boolean'];
 
     public function kapal()
     {

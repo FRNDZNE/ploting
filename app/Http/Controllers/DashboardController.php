@@ -27,10 +27,14 @@ class DashboardController extends Controller
         //     return $final;
         // }
         // $loginPage = false;
-        $data = Sandar::select(DB::raw('*, date(start) as mulai, date(finish) as selesai'))->with('kapal')->get();
+        $data = Sandar::select(DB::raw('*, date(start) as mulai, date(finish) as selesai'))
+            ->with('kapal')
+            ->where('finish', '>', now())
+            ->get();
+
         $dateRange = [];
 
-        for ($i = 6; $i >= 0 ; $i--) { 
+        for ($i = 5; $i >= 0; $i--) {
             $dateRange[] = now()->addDay($i)->toDateString();
         }
 
@@ -43,6 +47,6 @@ class DashboardController extends Controller
             # code...
             return $final;
         }
-        return view('welcome',$final);
+        return view('welcome', $final);
     }
 }

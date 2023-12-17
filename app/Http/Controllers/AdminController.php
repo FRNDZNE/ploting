@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\KapalEvent;
 use Illuminate\Http\Request;
 use App\Models\Kapal;
 use App\Models\Sandar;
+use Carbon\Carbon;
 use Image;
 use File;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -57,7 +60,7 @@ class AdminController extends Controller
     // post method
 
     public function store(Request $request)
-    {
+    {        
         $kapal = new Kapal;
         $kapal->nama = $request->nama;
         $kapal->panjang = $request->panjang;
@@ -74,11 +77,31 @@ class AdminController extends Controller
         $sandar->status = $request->status;
         $sandar->save();
 
+        broadcast(new KapalEvent());
+
         return redirect()->route('admin.index')->with('success','Berhasil Menambah Data');
     }
 
     public function update(Request $request, $id)
     {
+        /* $start=$request->rangestart;
+        // dd([$start, $start + $request->panjang]);
+        $exists = Sandar::select('sandars.*')
+            // ->whereBetween('rangestart', [$start, $start + $request->panjang])
+            ->join('kapals', 'sandars.kapal_id', '=', 'kapals.id')
+            // ->whereBetween(DB::raw('(sandars.rangestart + kapals.panjang)'), [$start, $start + $request->panjang])
+            ->where(function($q) use($request, $start) {
+                $q->where('rangestart', '>=', $start);
+                $q->orWhere(DB::raw('(sandars.rangestart + kapals.panjang)'), '<=', $start + $request->panjang);
+            })
+            ->whereDate('start', Carbon::parse($request->start)->toDateString())
+            ->where('sandars.id', '!=', $id)
+            ->exists();
+
+        if ($exists){
+            return redirect()->back()->with('error', 'Kapal Sudah Ada');
+        } */
+
         $kapal = Kapal::where('id',$id)->first();
         $kapal->nama = $request->nama;
         $kapal->panjang = $request->panjang;
@@ -100,6 +123,9 @@ class AdminController extends Controller
         $sandar->status = $request->status;
         $sandar->rangestart = $request->rangestart;
         $sandar->save();
+        
+        broadcast(new KapalEvent());
+        
         return redirect()->route('admin.index')->with('success','Berhasil Update Data');
 
     }
@@ -110,6 +136,8 @@ class AdminController extends Controller
         $kapal = Kapal::find($id);
         $kapal->sandar()->delete();
         $kapal->delete();
+        broadcast(new KapalEvent());
+
         return redirect()->back()->with('success','Berhasil Menghapus Data');
     }
 
@@ -118,6 +146,8 @@ class AdminController extends Controller
         $kapal = Kapal::withTrashed()->find($id);
         $kapal->sandar()->restore();
         $kapal->restore();
+        broadcast(new KapalEvent());
+
         return redirect()->back()->with('success','Data Berhasil Dipulihkan');
     }
 

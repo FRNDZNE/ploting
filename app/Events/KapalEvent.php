@@ -19,7 +19,7 @@ class KapalEvent implements ShouldBroadcast
      */
 
     public $kapal;
-    public function __construct($kapal)
+    public function __construct($kapal = null)
     {
         $this->kapal = $kapal;
     }
