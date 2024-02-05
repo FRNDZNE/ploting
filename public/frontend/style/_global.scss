@@ -1,0 +1,32 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: aliceblue;
+}
+
+.page-content {
+  margin-top: 50px;
+}
+
+.heading-logo {
+  display: flex;
+  justify-content: center;
+  object-fit: cover;
+
+  .logo-pelindo {
+    width: 200px;
+    height: auto;
+    margin: 30px;
+  }
+
+  .logo-port {
+    width: 450px;
+    height: auto;
+    margin: 20px;
+  }
+
+  .logo-bumn {
+    width: 200px;
+    height: auto;
+    margin: 30px;
+  }
+}

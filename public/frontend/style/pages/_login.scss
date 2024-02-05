@@ -1,0 +1,44 @@
+.page-login {
+  h2 {
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  label {
+    color: #000;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .form-control {
+    border-radius: 7px;
+    background: #ebf7fe;
+  }
+
+  .btn-back {
+    @include button-variant(#fefeff, transparent);
+    border-radius: 8px;
+    color: #0aabff;
+    width: 220px;
+
+    &:hover {
+      border: 2px solid #0aabff;
+      color: #0aabff;
+    }
+  }
+  .btn-sign {
+    @include button-variant(#0aabff, transparent);
+    border-radius: 8px;
+    color: #fefeff;
+    width: 220px;
+
+    &:hover {
+      border: 2px solid #fefeff;
+      color: #fefefe;
+    }
+  }
+}
