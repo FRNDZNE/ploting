@@ -39,7 +39,7 @@ class DashboardController extends Controller
             ->with('kapal')
             ->where('finish', '>', now())
             ->get();
-
+        
         $dateRange = [];
 
         for ($i = 5; $i >= 0; $i--) {

@@ -13,8 +13,8 @@
                 <h1 class="text-center">Tidak Ada Jadwal</h1>
             @else
                 <table border="0"
-                style="overflow-x: scroll; transform: scale(0.49) translateX(-50%); transform-origin: 0 0; position: absolute; left: 50%;"
-                id="table">
+                    style="overflow-x: scroll; transform: scale(0.49) translateX(-50%); transform-origin: 0 0; position: absolute; left: 50%;"
+                    id="table">
                     @php
                         $seen = [];
                         $date_range = array_reverse($date_range);
@@ -82,13 +82,26 @@
                     <tr class="reverse">
                         <td></td>
                         @for ($i = 0; $i <= 820; $i++)
-                            <td>{{ $i % 20 == 0 ? $i : '' }}</td>
+                            <td style="color:transparent;">{{ $i % 20 == 0 ? $i : '' }}</td>
                             {{-- <td>{{ $i }}</td> --}}
                         @endfor
                     </tr>
-                    
                 </table>
             @endif
+            <table border="0"
+                @if ($hitung == 0)
+                    style="overflow-x: scroll; transform: scale(0.49) translateX(-50%); transform-origin: 0 0; position: absolute; left: 50%; bottom: -500px"
+                @else
+                    style="overflow-x: scroll; transform: scale(0.49) translateX(-50%); transform-origin: 0 0; position: absolute; left: 50%; bottom: -550px"
+                @endif
+                id="table2">
+                <tr class="reverse">
+                    <td></td>
+                    @for ($i = 0; $i <= 820; $i++)
+                        <td style="color:red;">{{ $i % 20 == 0 ? $i : '' }}</td>
+                    @endfor
+                </tr>
+            </table>
         </div>
     </div>
     @foreach ($data as $d)
@@ -184,8 +197,15 @@
             let rows = $('tr', tbody).get();
             const lastRow = rows.pop();
             rows.reverse();
-            rows.push(lastRow)
+            rows.push(lastRow);
             tbody.html(rows);
+
+            var tbody2 = $('#table2 tbody2');
+            let rows2 = $('tr', tbody2).get();
+            const lastRow2 = rows2.pop();
+            rows2.reverse();
+            rows2.push(lastRow2);
+            tbody2.html(rows2);
         });
     </script>
 @endsection
