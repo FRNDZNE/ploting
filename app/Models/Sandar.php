@@ -22,25 +22,5 @@ class Sandar extends Model
         return $this->belongsTo(Kapal::class)->withTrashed();
     }
 
-    // public function getStartAttribute()
-    // {
-    //     $start = $this->attributes['start'];
-    //         $parse = Carbon::parse($start);
-    //         $date = $parse->translatedFormat('l, d F Y');
-    //         $time = $parse->translatedFormat('G:i');
-
-    //         $result = $date . ' Jam '. $time;
-    //         return $result;
-    // }
-    // public function getFinishAttribute()
-    // {
-    //     $finish = $this->attributes['finish'];
-    //     $parse = Carbon::parse($finish);
-    //     $date = $parse->translatedFormat('l, d F Y');
-    //     $time = $parse->translatedFormat('G:i');
-
-    //     $result = $date . ' Jam '. $time;
-    //     return $result;
-    //     // return Carbon::parse($this->attributes['finish'])->translatedFormat('l, d F Y G:i') . ' Pukul ' . Carbon::parse($this->attributes['finish'])->translatedFormat('G:i');
-    // }
+    
 }

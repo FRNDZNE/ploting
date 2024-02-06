@@ -21,6 +21,7 @@ use App\Models\Role;
 */
 
 Route::get('/',[DashboardController::class,'index'])->name('index');
+Route::get('/2',[DashboardController::class,'index2'])->name('index2');
 
 Auth::routes([
   'register' => false, // Registration Routes...
@@ -28,9 +29,7 @@ Auth::routes([
   'verify' => false, // Email Verification Routes...
 ]);
 
-Route::get('/templatebackend',function(){
-    return view('layouts.backend.app');
-});
+
 Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
 
