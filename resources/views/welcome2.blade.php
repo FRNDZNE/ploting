@@ -5,7 +5,7 @@
         <div class="text-center">
             <h3 id="dateTime"></h3>
         </div>
-        <div class="table-kapal" style="width: 100%;">
+        <div class="table-kapal" style="width: 100%; position: absolute;bottom:-300px">
             @php
                 $hitung = count($data);
             @endphp
@@ -21,8 +21,8 @@
                     @endphp
                     @foreach ($date_range as $date)
                         <tr class="reverse">
-                            {{-- <td width="100">{{ $date }}</td> --}}
-                            <td width="100"></td>
+                            <td width="100">{{ $date }}</td>
+                            {{-- <td width="100"></td> --}}
                             @php
                                 $datas = $data
                                     ->where('mulai', '<=', $date)
@@ -82,26 +82,27 @@
                     <tr class="reverse">
                         <td></td>
                         @for ($i = 0; $i <= 820; $i++)
-                            <td style="color:transparent;">{{ $i % 20 == 0 ? $i : '' }}</td>
+                            <td>{{ $i % 20 == 0 ? $i : '' }}</td>
                             {{-- <td>{{ $i }}</td> --}}
                         @endfor
                     </tr>
                 </table>
+                {{-- <table border="0"
+                style="
+                    overflow-x: scroll; 
+                    transform: scale(0.49) translateX(-50%); 
+                    transform-origin: 0 0; 
+                    position: absolute; left: 50%; bottom : -615px"
+                    id="table2">
+                    <tr class="reverse">
+                        <td></td>
+                        @for ($i = 0; $i <= 820; $i++)
+                            <td style="font-weight:bold">{{ $i % 20 == 0 ? $i : '' }}</td>
+                        @endfor
+                    </tr>
+                </table> --}}
             @endif
-            <table border="0"
-                @if ($hitung == 0)
-                    style="overflow-x: scroll; transform: scale(0.49) translateX(-50%); transform-origin: 0 0; position: absolute; left: 50%; bottom: -500px"
-                @else
-                    style="overflow-x: scroll; transform: scale(0.49) translateX(-50%); transform-origin: 0 0; position: absolute; left: 50%; bottom: -550px"
-                @endif
-                id="table2">
-                <tr class="reverse">
-                    <td></td>
-                    @for ($i = 0; $i <= 820; $i++)
-                        <td style="color:red;">{{ $i % 20 == 0 ? $i : '' }}</td>
-                    @endfor
-                </tr>
-            </table>
+            
         </div>
     </div>
     @foreach ($data as $d)

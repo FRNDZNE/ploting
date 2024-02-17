@@ -21,7 +21,7 @@
                     @endphp
                     @foreach ($date_range as $date)
                         <tr class="reverse">
-                            {{-- <td width="100">{{ $date }}</td> --}}
+                            <td width="100">{{ $date }}</td>
                             <td width="100"></td>
                             @php
                                 $datas = $data

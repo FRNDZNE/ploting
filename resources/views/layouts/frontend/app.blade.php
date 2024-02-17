@@ -14,7 +14,7 @@
       class="navbar-navbar-light d-flex mt-4"
       data-aos="fade-down"
       data-aos-delay="100">
-      <div class="container">
+      {{-- <div class="container">
         @guest  
           <a href="{{ route('login') }}" class="btn btn-login float-right">Login</a>
         @endguest
@@ -22,11 +22,20 @@
           <a href="{{ route('admin.dashboard') }}" class="btn btn-login float-right">Dashboard</a>
         @endauth
 
-      </div>
+      </div> --}}
     </nav>
     <section class="heading-logo" data-aos="fade-down" data-aos-delay="300">
       <img src="{{ asset('/') }}/frontend/images/logobumn.png" alt="" class="logo-bumn" />
-      <img src="{{ asset('/') }}/frontend/images/port.png" alt="" class="logo-port" q />
+      @auth
+      <a href="{{ route('admin.dashboard') }}">
+        <img src="{{ asset('/') }}/frontend/images/port.png" alt="" class="logo-port" />
+      </a>
+      @endauth
+      @guest
+      <a href="{{ route('login') }}">
+        <img src="{{ asset('/') }}/frontend/images/port.png" alt="" class="logo-port" />
+      </a>
+      @endguest
       <img src="{{ asset('/') }}/frontend/images/logopelindo.png" alt="" class="logo-pelindo" />
     </section>
     @yield('content')
