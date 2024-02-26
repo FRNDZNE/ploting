@@ -19,6 +19,7 @@ return new class extends Migration
             $table->boolean('finished')->default(0);
             $table->boolean('status');
             $table->unsignedInteger('rangestart');
+            $table->string('created_by');
             $table->string('info')->nullable();
             $table->timestamps();
             $table->softDeletes();

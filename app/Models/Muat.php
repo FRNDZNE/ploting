@@ -13,8 +13,8 @@ class Muat extends Model
     protected $guarded = [];
     use SoftDeletes;
 
-    public function kapal()
+    public function sandar()
     {
-        return $this->belongsTo(Kapal::class)->withTrashed();
+        return $this->belongsTo(Sandar::class)->withTrashed();
     }
 }

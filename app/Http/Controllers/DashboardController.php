@@ -31,7 +31,7 @@ class DashboardController extends Controller
             # code...
             return $final;
         }   
-        return view('welcome', $final);
+        return view('welcome2', $final);
     }
     public function index2()
     {

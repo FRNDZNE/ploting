@@ -180,15 +180,40 @@
                                     <span> Dashboard </span>
                                 </a>
                             </li>
-                            <li class="menu-title mt-2">Ploting</li>
                             <li>
-                                <a href="{{ route('admin.index') }}">
-                                    <i class="nav-icon fas fa-ship"></i>
-                                    <span> Ploting Kapal </span>
+                                <a href="#">
+                                    <i class="fe-folder"></i>
+                                    <span> Reporting (Coming Soon) </span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.history') }}">
+                                <a href="{{ route('admin.cetak') }}">
+                                    <i class="fe-archive"></i>
+                                    <span>Test Cetak (Coming Soon)</span>
+                                </a>
+                            </li>
+                            <li class="menu-title mt-2">Master</li>
+                            <li>
+                                <a href="{{ route('admin.kapal.index') }}">
+                                    <i class="fas fa-ship"></i>
+                                    <span>Kapal</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.kapal.history') }}">
+                                    <i class="mdi mdi-history"></i>
+                                    <span>History</span>
+                                </a>
+                            </li>
+                            <li class="menu-title mt-2">Plotting</li>
+                            <li>
+                                <a href="{{ route('admin.sandar.index') }}">
+                                    <i class="fe-anchor"></i>
+                                    <span> Plotting </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.sandar.history') }}">
                                     <i class="mdi mdi-history"></i>
                                     <span>History</span>
                                 </a>
@@ -239,7 +264,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <script>document.write(new Date().getFullYear())</script> &copy; Pelabuhan Indonesia Regional 2 Pontianak 
+                                <script>document.write(new Date().getFullYear())</script> &copy; Hafiz Putra Pratama 
                             </div>
                         </div>
                     </div>

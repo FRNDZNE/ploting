@@ -5,7 +5,7 @@
         <div class="text-center">
             <h3 id="dateTime"></h3>
         </div>
-        <div class="table-kapal" style="width: 100%; position: absolute;bottom:-300px">
+        <div class="table-kapal" style="width: 100%; position: absolute;">
             @php
                 $hitung = count($data);
             @endphp
@@ -21,7 +21,7 @@
                     @endphp
                     @foreach ($date_range as $date)
                         <tr class="reverse">
-                            <td width="100">{{ $date }}</td>
+                            {{-- <td width="100">{{ $date }}</td> --}}
                             {{-- <td width="100"></td> --}}
                             @php
                                 $datas = $data
@@ -46,7 +46,7 @@
                                         <span class="font-weight-bolder">{{ $d->kapal->nama }} ({{ $d->kapal->panjang }})</span>
                                         <br>
                                         <span class="font-weight-bold">
-                                            BO : {{ $d->kapal->bongkar->jumlah }} {{ $d->kapal->bongkar->satuan == 'm' ? 'Ton / M3' : ($d->kapal->bongkar->satuan == 'u' ? 'Unit' : ($d->kapal->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->kapal->bongkar->nama }} | MU : {{ $d->kapal->muat->jumlah }} {{ $d->kapal->muat->satuan == 'm' ? 'Ton / M3' : ($d->kapal->muat->satuan == 'u' ? 'Unit' : ($d->kapal->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->kapal->muat->nama }}
+                                            BO : {{ $d->bongkar->jumlah }} {{ $d->bongkar->satuan == 'm' ? 'Ton / M3' : ($d->bongkar->satuan == 'u' ? 'Unit' : ($d->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->bongkar->nama }} | MU : {{ $d->muat->jumlah }} {{ $d->muat->satuan == 'm' ? 'Ton / M3' : ($d->muat->satuan == 'u' ? 'Unit' : ($d->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->muat->nama }}
                                         </span>
                                         <br>
                                         @php
@@ -79,20 +79,20 @@
                             @endfor
                         </tr>
                     @endforeach
-                    <tr class="reverse">
+                    <tr>
                         <td></td>
-                        @for ($i = 0; $i <= 820; $i++)
-                            <td>{{ $i % 20 == 0 ? $i : '' }}</td>
+                        @for ($i = 820; $i >= 0; $i--)
+                            <td style="font-weight:bold; opacity:0;">{{ $i % 20 == 0 ? $i : '' }}</td>
                             {{-- <td>{{ $i }}</td> --}}
                         @endfor
                     </tr>
                 </table>
-                {{-- <table border="0"
+                <table border="0"
                 style="
                     overflow-x: scroll; 
                     transform: scale(0.49) translateX(-50%); 
                     transform-origin: 0 0; 
-                    position: absolute; left: 50%; bottom : -615px"
+                    position: absolute; left: 50%; bottom : -550px"
                     id="table2">
                     <tr class="reverse">
                         <td></td>
@@ -100,7 +100,7 @@
                             <td style="font-weight:bold">{{ $i % 20 == 0 ? $i : '' }}</td>
                         @endfor
                     </tr>
-                </table> --}}
+                </table>
             @endif
             
         </div>
@@ -143,8 +143,8 @@
                                 <h4 class="font-weight-bold">
                                     Detail Bongkar Muat
                                 </h4>
-                                <p><b>Bongkar : </b> {{ $d->kapal->bongkar->jumlah }} {{ $d->kapal->bongkar->satuan == 'm' ? 'Ton / M3' : ($d->kapal->bongkar->satuan == 'u' ? 'Unit' : ($d->kapal->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->kapal->bongkar->nama }}</p>
-                                <p><b>Muat : </b> {{ $d->kapal->muat->jumlah }} {{ $d->kapal->muat->satuan == 'm' ? 'Ton / M3' : ($d->kapal->muat->satuan == 'u' ? 'Unit' : ($d->kapal->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->kapal->muat->nama }}</p>
+                                <p><b>Bongkar : </b> {{ $d->bongkar->jumlah }} {{ $d->bongkar->satuan == 'm' ? 'Ton / M3' : ($d->bongkar->satuan == 'u' ? 'Unit' : ($d->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->bongkar->nama }}</p>
+                                <p><b>Muat : </b> {{ $d->muat->jumlah }} {{ $d->muat->satuan == 'm' ? 'Ton / M3' : ($d->muat->satuan == 'u' ? 'Unit' : ($d->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->muat->nama }}</p>
                             </div>
                         </div>
                     </div>

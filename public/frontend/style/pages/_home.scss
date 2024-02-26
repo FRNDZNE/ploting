@@ -1,15 +1,12 @@
-.page-home {
-}
-
 .btn-login {
-  @include button-variant(#eee, transparent);
-  width: 150px;
-  border-radius: 10px;
-  color: #068fff;
-  font-size: 20px;
-  border: 1px solid #068fff;
-
-  &:hover {
+    @include button-variant(#eee, transparent);
+    width: 150px;
+    border-radius: 10px;
     color: #068fff;
-  }
+    font-size: 20px;
+    border: 1px solid #068fff;
+
+    &:hover {
+        color: #068fff;
+    }
 }

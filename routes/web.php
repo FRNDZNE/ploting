@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\KapalController;
+use App\Http\Controllers\SandarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CetakController;
 use App\Events\KapalEvent;
 use App\Models\Sandar;
 use App\Models\User;
@@ -31,23 +33,39 @@ Auth::routes([
 
 
 Route::middleware('auth')->prefix('admin')->group(function(){
-    Route::get('/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+    Route::get('/dashboard',[SandarController::class,'dashboard'])->name('admin.dashboard');
+    Route::get('/test-cetak',[CetakController::class,'cetak'])->name('admin.cetak');
 
-    Route::prefix('data-kapal')->group(function(){
+    Route::prefix('kapal')->group(function(){
         // get method
-        Route::get('/',[AdminController::class,'index'])->name('admin.index');
-        Route::get('/create',[AdminController::class,'create'])->name('admin.create');
-        Route::get('/edit/{id}',[AdminController::class,'edit'])->name('admin.edit');
-        Route::get('/detail/{id}',[AdminController::class,'detail'])->name('admin.detail');
-        Route::get('/history/',[AdminController::class,'history'])->name('admin.history');
-        Route::get('/history/detail/{id}',[AdminController::class,'history_detail'])->name('admin.history.detail');
+        Route::get('/',[KapalController::class,'index'])->name('admin.kapal.index');
+        Route::get('/create',[KapalController::class,'create'])->name('admin.kapal.create');
+        Route::get('/edit/{id}',[KapalController::class,'edit'])->name('admin.kapal.edit');
+        Route::get('/detail/{id}',[KapalController::class,'detail'])->name('admin.kapal.detail');
+        Route::get('/history/',[KapalController::class,'history'])->name('admin.kapal.history');
+        Route::get('/history/detail/{id}',[KapalController::class,'history_detail'])->name('admin.kapal.history.detail');
         // post method
-        Route::post('/store',[AdminController::class,'store'])->name('admin.store');
-        Route::post('/update/{id}',[AdminController::class,'update'])->name('admin.update');
-        Route::post('/delete/{id}',[AdminController::class,'delete'])->name('admin.delete');
-        Route::post('/restore/{id}',[AdminController::class,'restore'])->name('admin.restore');
-        Route::post('/destroy/{id}',[AdminController::class,'destroy'])->name('admin.destroy');
-        Route::post('/setketerangan',[AdminController::class,'setketerangan'])->name('admin.keterangan');
+        Route::post('/store',[KapalController::class,'store'])->name('admin.kapal.store');
+        Route::post('/update/{id}',[KapalController::class,'update'])->name('admin.kapal.update');
+        Route::post('/delete/{id}',[KapalController::class,'delete'])->name('admin.kapal.delete');
+        Route::post('/restore/{id}',[KapalController::class,'restore'])->name('admin.kapal.restore');
+        Route::post('/destroy/{id}',[KapalController::class,'destroy'])->name('admin.kapal.destroy');
+    });
+    Route::prefix('sandar')->group(function(){
+        // get method
+        Route::get('/',[SandarController::class,'index'])->name('admin.sandar.index');
+        Route::get('/create',[SandarController::class,'create'])->name('admin.sandar.create');
+        Route::get('/edit/{id}',[SandarController::class,'edit'])->name('admin.sandar.edit');
+        Route::get('/detail/{id}',[SandarController::class,'detail'])->name('admin.sandar.detail');
+        Route::get('/history/',[SandarController::class,'history'])->name('admin.sandar.history');
+        Route::get('/history/detail/{id}',[SandarController::class,'history_detail'])->name('admin.sandar.history.detail');
+        // post method
+        Route::post('/store',[SandarController::class,'store'])->name('admin.sandar.store');
+        Route::post('/update/{id}',[SandarController::class,'update'])->name('admin.sandar.update');
+        Route::post('/delete/{id}',[SandarController::class,'delete'])->name('admin.sandar.delete');
+        Route::post('/restore/{id}',[SandarController::class,'restore'])->name('admin.sandar.restore');
+        Route::post('/destroy/{id}',[SandarController::class,'destroy'])->name('admin.sandar.destroy');
+        Route::post('/setketerangan',[SandarController::class,'setketerangan'])->name('admin.sandar.keterangan');
     });
 
     Route::prefix('user')->middleware('role:superadmin')->group(function(){

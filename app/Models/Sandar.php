@@ -22,5 +22,15 @@ class Sandar extends Model
         return $this->belongsTo(Kapal::class)->withTrashed();
     }
 
+    public function bongkar()
+    {
+        return $this->hasOne(Bongkar::class)->withTrashed();
+    }
+
+    public function muat()
+    {
+        return $this->hasOne(Muat::class)->withTrashed();
+    }
+
     
 }

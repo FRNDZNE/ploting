@@ -14,16 +14,7 @@ class Kapal extends Model
 
     public function sandar()
     {
-        return $this->hasOne(Sandar::class)->withTrashed();
+        return $this->hasMany(Sandar::class)->withTrashed();
     }
 
-    public function bongkar()
-    {
-        return $this->hasOne(Bongkar::class)->withTrashed();
-    }
-
-    public function muat()
-    {
-        return $this->hasOne(Muat::class)->withTrashed();
-    }
 }

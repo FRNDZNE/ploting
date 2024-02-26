@@ -7,13 +7,7 @@
             <div class="card">
                 <div class="card-body widget-user">
                     <div class="text-center">
-                        @php
-                            $kapal = count($data['kapal']);
-                            // $sandar = count($data['sandar']);
-                            // $rencana = count($data['rencana']);
-                            // $selesai = count($data['selesai']);
-                        @endphp
-                        <h2 class="fw-normal text-primary" data-plugin="counterup">{{ $kapal }}</h2>
+                        <h2 class="fw-normal text-primary" data-plugin="counterup"></h2>
                         <h5>Kapal Terdata</h5>
                     </div>
                 </div>

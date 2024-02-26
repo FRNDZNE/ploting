@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('muats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kapal_id')->constrained()->onDelete('cascade');
+            $table->foreignId('sandar_id')->constrained()->onDelete('cascade');
             $table->string('nama')->nullable();
             $table->integer('jumlah')->nullable();
             $table->enum('satuan',['m','u','b'])->nullable();

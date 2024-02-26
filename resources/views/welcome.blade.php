@@ -46,7 +46,7 @@
                                         <span class="font-weight-bolder">{{ $d->kapal->nama }} ({{ $d->kapal->panjang }})</span>
                                         <br>
                                         <span class="font-weight-bold">
-                                            BO : {{ $d->kapal->bongkar->jumlah }} {{ $d->kapal->bongkar->satuan == 'm' ? 'Ton / M3' : ($d->kapal->bongkar->satuan == 'u' ? 'Unit' : ($d->kapal->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->kapal->bongkar->nama }} | MU : {{ $d->kapal->muat->jumlah }} {{ $d->kapal->muat->satuan == 'm' ? 'Ton / M3' : ($d->kapal->muat->satuan == 'u' ? 'Unit' : ($d->kapal->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->kapal->muat->nama }}
+                                            BO : {{ $d->bongkar->jumlah }} {{ $d->bongkar->satuan == 'm' ? 'Ton / M3' : ($d->bongkar->satuan == 'u' ? 'Unit' : ($d->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->bongkar->nama }} | MU : {{ $d->muat->jumlah }} {{ $d->muat->satuan == 'm' ? 'Ton / M3' : ($d->muat->satuan == 'u' ? 'Unit' : ($d->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->muat->nama }}
                                         </span>
                                         <br>
                                         @php
@@ -129,8 +129,8 @@
                                 <h4 class="font-weight-bold">
                                     Detail Bongkar Muat
                                 </h4>
-                                <p><b>Bongkar : </b> {{ $d->kapal->bongkar->jumlah }} {{ $d->kapal->bongkar->satuan == 'm' ? 'Ton / M3' : ($d->kapal->bongkar->satuan == 'u' ? 'Unit' : ($d->kapal->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->kapal->bongkar->nama }}</p>
-                                <p><b>Muat : </b> {{ $d->kapal->muat->jumlah }} {{ $d->kapal->muat->satuan == 'm' ? 'Ton / M3' : ($d->kapal->muat->satuan == 'u' ? 'Unit' : ($d->kapal->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->kapal->muat->nama }}</p>
+                                <p><b>Bongkar : </b> {{ $d->bongkar->jumlah }} {{ $d->bongkar->satuan == 'm' ? 'Ton / M3' : ($d->bongkar->satuan == 'u' ? 'Unit' : ($d->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->bongkar->nama }}</p>
+                                <p><b>Muat : </b> {{ $d->muat->jumlah }} {{ $d->muat->satuan == 'm' ? 'Ton / M3' : ($d->muat->satuan == 'u' ? 'Unit' : ($d->bongkar->satuan == 'b' ? 'Box' : '-')) }} {{ $d->muat->nama }}</p>
                             </div>
                         </div>
                     </div>

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nama');
             $table->unsignedInteger('panjang');
             $table->string('foto');
-            $table->string('created_by');
             $table->timestamps();
             $table->softDeletes();
         });
